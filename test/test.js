@@ -23,21 +23,48 @@ MonTestCase.prototype.testC = function() {
 };
 
 MonTestCase.prototype.testD = function() {
-    a.start_blanc();
+    //a.start_blanc();
     assertTrue(a.check() === 1 );
 };
 
 MonTestCase.prototype.testE = function() {
-    a.start_blanc();
+    //a.start_blanc();
     a.change_player();
     assertTrue(a.check_joueur() === "Noir" );
 };
 
 MonTestCase.prototype.testF = function() {
-    a.start_blanc();
-    a.rotation_90();
+    //a.start_blanc();
+    a.rotation_90_clockwise();
+    //a.rotation_90_counterclockwise()
 
     assertTrue(a.check_rotation_1() === "b" );
+};
+MonTestCase.prototype.testG = function(){
+
+    a.black_first_move();
+    assertTrue(a.check() === 2 );
+    assertTrue(a.check_black_first_move() === "n");
+
+
+};
+MonTestCase.prototype.testH = function(){
+
+    a.rotation_90_counterclockwise();
+    assertTrue(a.check_start_blanc() === "b" );
+    assertTrue(a.check_rotation_black_2() === "n" );
+
+
+
+
+};
+MonTestCase.prototype.testI = function(){
+
+    //assertTrue(a.blanc_play(0,0) === "not_empty" );
+    assertException( function(){a.blanc_play(0,0)},"not_empty");
+
+
+
 };
 
 

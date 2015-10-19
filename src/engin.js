@@ -15,14 +15,17 @@ engin = function () {
 
         var i;
         var j;
+        var hehe = 1;
         for (i = 0; i < 3; i++) {
             carre[i] = new Array(3);
             for (j = 0; j < 3; j++) {
                 //carre[i][j] = false;
-                carre[i][j] = "vide";
+                carre[i][j] = "vide" ;
+                //hehe++;
                 // return carre[i][j];
             }
         }
+
         //-----------------------------------------------
 
         joueur = "Blanc";
@@ -70,7 +73,7 @@ engin = function () {
     };
 
 
-    this.rotation_90 = function(){
+    this.rotation_90_clockwise = function(){
         var pr = new Array(3);
         var i;
         var pivot;
@@ -105,35 +108,64 @@ engin = function () {
 
 
         }
+
         //this.display_carre();
 
 
-        //var num = 0;
-        //var pro;
+    };
+    this.rotation_90_counterclockwise = function(){
 
-        /*for (i = 0; i < 3; i++) {
+        var pr = new Array(3);
+        var i;
+        var pivot;
+        var j;
+        for (i = 0; i < 3; i++) {
+            pr[i] = new Array(3);
             for (j = 0; j < 3; j++) {
-                if (j - 2 < 0 ) {
-                    pro = 0 ;
-                    pro = (j - 2)* -1;
-                   // carre [i+pro][0] = carre[i] [];
-                    // probleme rotation
-                }
-                else if ( j == 2 ){
-                    carre [i][0]
+                pr[i][j] = "vide";
 
-
-                }
-
-                // return carre[i][j];
             }
-        }*/
-        //return num;
+        }
+
+        for(i = 0 ; i < 3 ; i++){
+            pivot = 0;
+            for(j = 2 ; j > -1 ; j--){
+                pr[i][pivot] = carre [j][i];
+                pivot ++;
+
+
+            }
+
+
+        }
+
+
+        for(i = 0 ; i < 3 ; i++){
+
+            for(j = 0 ; j < 3 ; j++){
+
+                carre [i][j] = pr[i][j];
+            }
+
+
+        }
+        //this.display_carre();
 
 
     };
     this.check_rotation_1 = function() {
         return carre [2][0];
+    };
+    this.check_rotation_black_2 = function() {
+        return carre [0][2];
+    };
+    this.black_first_move = function(){
+        carre [0][0] = "n";
+    };
+    this.check_black_first_move = function(){
+
+        return carre[0][0];
+
     };
     this.check = function() {
         var i;
@@ -149,6 +181,44 @@ engin = function () {
             }
         }
         return num;
+
+    };
+    this.not_empty_exception = function(){
+
+        this.name = "not_empty";
+
+    };
+
+    this.blanc_play = function(a , b){
+
+        if(carre [a][b] != "vide"){
+
+            throw new this.not_empty_exception();
+
+
+        }
+        else
+        {
+            carre[a][b] = "b";
+
+        }
+
+
+    };
+    this.black_play = function(a , b){
+
+        if(carre [a][b] != "vide"){
+
+            throw new this.not_empty_exception();
+
+
+        }
+        else
+        {
+            carre[a][b] = "n";
+
+        }
+
 
     };
 
