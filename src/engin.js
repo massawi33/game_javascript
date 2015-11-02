@@ -413,6 +413,57 @@ engin = function () {
 
 
     };
+    this.check_win_horisontal = function (a, b, cr, cl) {
+        var i, num = 0;
+        if (cr === 1 || cr === 2) {
+
+            for (i = 0; i < 3; i = i + 1) {
+
+                if (carre[i][b] === cl) {
+                    num = num + 1;
+
+
+                }
+
+            }
+            for (i = 0; i < 3; i = i + 1) {
+
+                if (carre2[i][b] === cl) {
+                    num = num + 1;
+
+
+                }
+
+            }
+        }else if (cr === 1 || cr === 2) {
+
+            for (i = 0; i < 3; i = i + 1) {
+
+                if (carre3[i][b] === cl) {
+                    num = num + 1;
+
+
+                }
+
+            }
+            for (i = 0; i < 3; i = i + 1) {
+
+                if (carre4[i][b] === cl) {
+                    num = num + 1;
+
+
+                }
+
+            }
+            if (num > 5) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+    };
     this.black_play = function (a, b, cr) {
 
         if (cr === 1) {
